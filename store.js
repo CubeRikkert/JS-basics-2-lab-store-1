@@ -1,19 +1,20 @@
 
 let shoppingCart = []
 let products = [
-  { referenceNumber: 1231, name: "Super Lite Mat", price: 10 },
-  { referenceNumber: 1232, name: "Power Mat", price: 20 },
-  { referenceNumber: 1233, name: "Block", price: 30 },
-  { referenceNumber: 1234, name: "Meditation cushion", price: 30 },
-  { referenceNumber: 1235, name: "The best T-shirt", price: 200 },
-  { referenceNumber: 1236, name: "The cutest yoga pants", price: 300 },
-  { referenceNumber: 1237, name: "Bring Yoga To Life", price: 30 },
-  { referenceNumber: 1238, name: "Light On Yoga", price: 10 }
+  { referenceNumber: 1, name: "Super Lite Mat", price: 10 },
+  { referenceNumber: 2, name: "Power Mat", price: 20 },
+  { referenceNumber: 3, name: "Block", price: 30 },
+  { referenceNumber: 4, name: "Meditation cushion", price: 30 },
+  { referenceNumber: 5, name: "The best T-shirt", price: 200 },
+  { referenceNumber: 6, name: "The cutest yoga pants", price: 300 },
+  { referenceNumber: 7, name: "Bring Yoga To Life", price: 30 },
+  { referenceNumber: 8, name: "Light On Yoga", price: 10 }
 ]
 
 var shopFromStore =  function () {
-  var refNr = askUserForReferenceNumber();
-  shoppingCart.push(`${refNr.name}`)
+   askUserForReferenceNumber();
+
+  console.log(shoppingCart)
 
   displayProductsFromShoppingCart();
 
@@ -27,14 +28,25 @@ var shopFromStore =  function () {
 };
 
 var displayProductsFromShoppingCart = function() {
+
   // iterate over the shoppingCart and display the contents
 
   // use the printProductsOnScreen function for inspiration
 };
 
 var askUserForReferenceNumber = function() {
-  let response = window.prompt('please return the reference number of the item you would like to buy')
-  return response
+  let refNr = window.prompt('please return the reference number of the item you would like to buy')
+
+  refNr = Number(refNr)
+  let addToShoppingCart = products.find(product => product.referenceNumber === refNr)
+  shoppingCart.push(addToShoppingCart)
+
+  let response2 = window.prompt('would you like to shop for more or check out? please answer y or n')
+  if (response2 === 'n') {
+    console.log('Goodbye :)')
+   } else {
+    askUserForReferenceNumber();
+  }
   // Use window.prompt to ask the user a question and capture their response,
   // then, return the response from this function back to our caller
 };
